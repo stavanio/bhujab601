@@ -220,21 +220,6 @@ class ReBotRSMITController:
                     f"({motor_config.model}) 已注册"
                 )
 
-            # Read the actual positions before startup to avoid a sudden jump after enabling.
-            # 启动前读取实际位置，避免使能后突然跳动。
-            current_positions = self._read_positions_rad()
-
-            with self.target_lock:
-                self.target_positions[:] = current_positions
-                self.command_positions[:] = current_positions
-
-            print(
-                "[Connect / 连接] Current angles: "
-                f"{[round(math.degrees(x), 2) for x in current_positions]}"
-                " / 当前角度："
-                f"{[round(math.degrees(x), 2) for x in current_positions]}"
-            )
-
             for index, motor in enumerate(self.motors):
                 motor_id = self.config.motors[index].motor_id
 
@@ -253,13 +238,29 @@ class ReBotRSMITController:
 
                 time.sleep(0.05)
 
-            # Enable all motors only once. / 所有电机只使能一次。
+            # mechPos (0x7019) is reliably readable after enable.
+            # 使能后 mechPos (0x7019) 才可稳定读取。
             with self._io_lock_guard():
                 self.controller.enable_all()
 
             time.sleep(0.30)
 
             print("[Connect / 连接] All motors enabled / 所有电机已使能")
+
+            # Read actual positions after enable to seed targets and avoid a jump.
+            # 使能后读取实际位置，作为目标初值，避免突然跳动。
+            current_positions = self._read_positions_rad()
+
+            with self.target_lock:
+                self.target_positions[:] = current_positions
+                self.command_positions[:] = current_positions
+
+            print(
+                "[Connect / 连接] Current angles: "
+                f"{[round(math.degrees(x), 2) for x in current_positions]}"
+                " / 当前角度："
+                f"{[round(math.degrees(x), 2) for x in current_positions]}"
+            )
 
         except Exception:
             self._disable_and_close()
@@ -575,6 +576,21 @@ class ReBotRSMITController:
             math.degrees(value)
             for value in self._read_positions_rad()
         ]
+
+    def disable_motors(self) -> None:
+        """Disable all motors without closing CAN.
+        失能所有电机，但不关闭 CAN 连接。"""
+
+        if self.controller is None:
+            return
+
+        with self._io_lock_guard():
+            self.controller.disable_all()
+
+        print(
+            "[Disable / 失能] All motors disabled / "
+            "所有电机已失能"
+        )
 
     # -------------------------------------------------------------------------
     # Position and temperature reading / 位置与温度读取

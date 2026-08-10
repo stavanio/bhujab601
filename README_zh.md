@@ -142,7 +142,8 @@ YAML 中未填写的项自动使用代码内默认值；填了不存在的键会
 | 方法 | 参数 | 返回值 | 说明 |
 |---|---|---|---|
 | `__init__(config=None)` | `config`: `ControllerConfig \| None` | — | 创建控制器；`config=None` 时加载默认 YAML |
-| `connect()` | — | `None` | 连接 CAN 并使能电机；重复调用无副作用 |
+| `connect()` | — | `None` | 连接 CAN、切 MIT、使能后读当前角度；重复调用无副作用 |
+| `disable_motors()` | — | `None` | 失能所有电机，不关闭 CAN（便于手动推动后读位置） |
 | `start(...)` | `enable_esc`: 是否监听 Esc；`install_signal_handlers`: 是否注册 Ctrl+C / SIGTERM | `None` | 启动后台线程；重复调用无副作用 |
 
 #### 运动控制（单位：度、度/秒）
@@ -238,7 +239,9 @@ python3 examples/custom_config.py config/rebotarm_rs.yaml
 
 ### 5. 读取实际位置
 
-见 `examples/read_joint_angles.py`。`read_joint_angles()` 会同步访问 CAN，不宜在极高频率循环中调用；监控下发进度用 `get_command_angles()` 即可。
+见 `examples/read_joint_angles.py`。流程：`connect()`（切 MIT、使能、读当前角度）→ `disable_motors()`（失能，便于手动推动）→ 循环 `read_joint_angles()` 打印实际角度。按 Ctrl+C 结束，`stop(return_to_zero=False)` 关闭 CAN，不回零。
+
+`read_joint_angles()` 会同步访问 CAN，不宜在极高频率循环中调用；监控下发进度用 `get_command_angles()` 即可。
 
 ### 6. 安全停止的几种方式
 

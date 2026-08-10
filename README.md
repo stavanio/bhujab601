@@ -144,7 +144,8 @@ create instance → start() → set_max_speeds() → set_joint_angles() → … 
 | Method | Parameters | Returns | Description |
 |---|---|---|---|
 | `__init__(config=None)` | `config`: `ControllerConfig \| None` | — | Create controller; loads default YAML when `config` is `None` |
-| `connect()` | — | `None` | Connect CAN and enable motors; safe to call repeatedly |
+| `connect()` | — | `None` | Connect CAN, MIT mode, enable, then read current angles; safe to call repeatedly |
+| `disable_motors()` | — | `None` | Disable all motors without closing CAN (for passive position reading) |
 | `start(...)` | `enable_esc`: Esc listener; `install_signal_handlers`: Ctrl+C / SIGTERM | `None` | Start background threads; safe to call repeatedly |
 
 #### Motion Control (units: degrees, deg/s)
@@ -236,7 +237,9 @@ See `examples/single_joint_adjust.py`. Default targets: J1=+25°, J2=+15°, J3=+
 
 ### 5. Read Actual Positions
 
-See `examples/read_joint_angles.py`. `read_joint_angles()` uses CAN synchronously — avoid calling it at very high rates; use `get_command_angles()` to monitor commanded motion.
+See `examples/read_joint_angles.py`. Flow: `connect()` (MIT mode, enable, read current angles) → `disable_motors()` (disable so you can move the arm by hand) → loop `read_joint_angles()` to print actual angles. Press Ctrl+C to exit; `stop(return_to_zero=False)` closes CAN without return-to-zero.
+
+`read_joint_angles()` uses CAN synchronously — avoid calling it at very high rates; use `get_command_angles()` to monitor commanded motion.
 
 ### 6. Stop Options
 
