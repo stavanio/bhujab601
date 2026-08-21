@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Local captures / exports
+captures/
+exports/
+*.log
+
+# Do not commit private environment files
+.env
+.env.*
