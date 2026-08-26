@@ -21,7 +21,7 @@ temperatures:
   disconnect_c: 140.0   # Emergency disable immediately, no return-to-zero / 立即紧急失能，不再回零
 
 return_zero:
-  max_speed_deg_s: 30.0           # Peak speed for normal Esc/Ctrl+C/stop() return-to-zero / 普通 Esc/Ctrl+C/stop() 回零峰值速度
+  max_speed_deg_s: 30.0
   thermal_max_speed_deg_s: 30.0   # Peak speed for thermal-triggered return-to-zero / 高温触发后的回零峰值速度
   min_time_s: 3.0                 # Minimum return-to-zero duration / 最短回零时间
   settle_time_s: 0.30             # Hold time after reaching zero / 到达零点后保持时间
