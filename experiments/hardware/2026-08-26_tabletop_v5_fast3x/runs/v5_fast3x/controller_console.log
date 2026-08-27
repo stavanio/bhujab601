@@ -1,0 +1,339 @@
+========================================================================
+RUNNING FROZEN J3 PROOF THROUGH EXPERIMENTAL GRAVITY WRAPPER
+TRIX_GRAVITY_ALPHA = 0.25
+GOLD controller source itself is UNMODIFIED
+========================================================================
+[Config / 配置] Loaded config file: /home/stavanio/rebot_control/config/rebotarm_rs.yaml / 已加载配置文件：/home/stavanio/rebot_control/config/rebotarm_rs.yaml
+[GRAVITY EXPERIMENT] J3 only | alpha_target=0.250 | ramp=2.0s
+[GRAVITY MODEL] /home/stavanio/reBotArm_control_py/urdf/00-arm-rs_asm-v3/urdf/00-arm-rs_asm-v3.urdf
+[Connect / 连接] Opening CAN interface: can0 / 打开 CAN 接口：can0
+[Connect / 连接] Motor 1 (rs-06) registered / 电机 1 (rs-06) 已注册
+[Connect / 连接] Motor 2 (rs-06) registered / 电机 2 (rs-06) 已注册
+[Connect / 连接] Motor 3 (rs-06) registered / 电机 3 (rs-06) 已注册
+[Connect / 连接] Motor 4 (rs-00) registered / 电机 4 (rs-00) 已注册
+[Connect / 连接] Motor 5 (rs-00) registered / 电机 5 (rs-00) 已注册
+[Connect / 连接] Motor 6 (rs-00) registered / 电机 6 (rs-00) 已注册
+[Connect / 连接] Motor 7 (rs-00) registered / 电机 7 (rs-00) 已注册
+[Connect / 连接] Motor 1 switching to MIT mode / 电机 1 切换到 MIT 模式
+[Connect / 连接] Motor 2 switching to MIT mode / 电机 2 切换到 MIT 模式
+[Connect / 连接] Motor 3 switching to MIT mode / 电机 3 切换到 MIT 模式
+[Connect / 连接] Motor 4 switching to MIT mode / 电机 4 切换到 MIT 模式
+[Connect / 连接] Motor 5 switching to MIT mode / 电机 5 切换到 MIT 模式
+[Connect / 连接] Motor 6 switching to MIT mode / 电机 6 切换到 MIT 模式
+[Connect / 连接] Motor 7 switching to MIT mode / 电机 7 切换到 MIT 模式
+[Connect / 连接] All motors enabled / 所有电机已使能
+[Connect / 连接] Current angles: [-1.75, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56] / 当前角度：[-1.75, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+[Start / 启动] MIT rate: 200 Hz / MIT 频率：200 Hz
+[Start / 启动] Temperature refresh: 2.0 Hz / 温度刷新：2.0 Hz
+[Start / 启动] Temperature thresholds: alarm=110.0°C, return-to-zero=125.0°C, disconnect=140.0°C / 温度阈值：报警=110.0°C，回零=125.0°C，断开=140.0°C
+[Start / 启动] Esc / Ctrl+C / arm.stop() will slowly return to zero and then disable / Esc / Ctrl+C / arm.stop() 会缓慢回零后失能
+
+CAPTURED START:
+  J1: -1.75°
+  J2: +0.03°
+  J3: +0.26°
+  J4: -2.01°
+  J5: -1.64°
+  J6: -3.49°
+  J7: +1.56°
+
+========================================================================
+TRIX PREPOSITION: J1 +110 DEG RELATIVE -- CONTROLLED
+========================================================================
+FROM: [-1.75, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+TO:   [108.25, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+J1: cmd=-1.75° actual=-1.74° iqf=-0.105
+[GRAV] alpha=0.125 gJ3=+6.762Nm tauFF_J3=+0.848Nm
+J1: cmd=+2.80° actual=+2.29° iqf=+0.172
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+7.34° actual=+6.78° iqf=+0.420
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+11.89° actual=+11.50° iqf=+0.235
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+16.43° actual=+15.87° iqf=+0.371
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+20.98° actual=+20.44° iqf=+0.357
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+25.52° actual=+25.01° iqf=+0.175
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+30.07° actual=+29.51° iqf=+0.413
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+34.61° actual=+34.21° iqf=+0.091
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+39.16° actual=+38.59° iqf=+0.433
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+43.70° actual=+43.25° iqf=+0.346
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+48.25° actual=+47.72° iqf=+0.253
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+52.79° actual=+52.26° iqf=+0.315
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+57.34° actual=+56.95° iqf=+0.084
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+61.88° actual=+61.35° iqf=+0.328
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+66.43° actual=+65.96° iqf=+0.260
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+70.97° actual=+70.39° iqf=+0.407
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+75.52° actual=+75.01° iqf=+0.269
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+80.06° actual=+79.66° iqf=+0.098
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+84.61° actual=+84.03° iqf=+0.406
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+89.15° actual=+88.74° iqf=+0.297
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+93.70° actual=+93.13° iqf=+0.363
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+98.24° actual=+97.70° iqf=+0.443
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+102.79° actual=+102.30° iqf=+0.125
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+107.33° actual=+106.79° iqf=+0.379
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+
+J1 PREPOSITION REACHED.
+Holding 2 seconds before linkage motion...
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+
+========================================================================
+1/3 J2 INITIAL APPROACH +18 DEG
+========================================================================
+FROM: [108.25, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+TO:   [108.25, 18.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+J2: cmd=+0.03° actual=+0.04° iqf=-0.200
+[GRAV] alpha=0.250 gJ3=+6.868Nm tauFF_J3=+1.717Nm
+J2: cmd=+3.67° actual=+2.96° iqf=+1.864
+[GRAV] alpha=0.250 gJ3=+6.963Nm tauFF_J3=+1.741Nm
+J2: cmd=+7.31° actual=+6.56° iqf=+2.090
+[GRAV] alpha=0.250 gJ3=+7.030Nm tauFF_J3=+1.758Nm
+J2: cmd=+10.94° actual=+10.24° iqf=+1.742
+[GRAV] alpha=0.250 gJ3=+7.070Nm tauFF_J3=+1.768Nm
+J2: cmd=+14.58° actual=+14.07° iqf=+0.957
+[GRAV] alpha=0.250 gJ3=+7.082Nm tauFF_J3=+1.770Nm
+J2: cmd=+18.03° actual=+17.66° iqf=+0.869
+[GRAV] alpha=0.250 gJ3=+7.081Nm tauFF_J3=+1.770Nm
+
+========================================================================
+2/3 J4 PRESHAPE +14 DEG
+========================================================================
+FROM: [108.25, 18.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+TO:   [108.25, 18.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J4: cmd=-2.01° actual=-2.12° iqf=+0.106
+[GRAV] alpha=0.250 gJ3=+7.103Nm tauFF_J3=+1.776Nm
+J4: cmd=+1.63° actual=-0.95° iqf=+1.838
+[GRAV] alpha=0.250 gJ3=+7.122Nm tauFF_J3=+1.781Nm
+J4: cmd=+5.27° actual=+2.50° iqf=+2.043
+[GRAV] alpha=0.250 gJ3=+7.134Nm tauFF_J3=+1.783Nm
+J4: cmd=+8.90° actual=+5.80° iqf=+2.209
+[GRAV] alpha=0.250 gJ3=+7.137Nm tauFF_J3=+1.784Nm
+[GRAV] alpha=0.250 gJ3=+7.137Nm tauFF_J3=+1.784Nm
+
+EXPLICIT J3 ENABLE BEFORE FINAL LOW APPROACH
+J3 BEFORE: actual=+0.35° iqf=2.4318408966064453
+
+========================================================================
+3/3 J2 FINAL TABLETOP APPROACH +30 DEG
+========================================================================
+FROM: [108.25, 18.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J2: cmd=+18.03° actual=+17.74° iqf=+1.214
+[GRAV] alpha=0.250 gJ3=+7.148Nm tauFF_J3=+1.787Nm
+J2: cmd=+21.65° actual=+21.11° iqf=+1.157
+[GRAV] alpha=0.250 gJ3=+7.140Nm tauFF_J3=+1.785Nm
+J2: cmd=+25.29° actual=+24.85° iqf=+0.439
+[GRAV] alpha=0.250 gJ3=+7.103Nm tauFF_J3=+1.776Nm
+J2: cmd=+28.92° actual=+28.67° iqf=+0.112
+[GRAV] alpha=0.250 gJ3=+7.064Nm tauFF_J3=+1.766Nm
+
+J3 HOLD DURING FINAL TABLETOP APPROACH:
+  before = +0.35°
+  after  = +0.35°
+  moved  = +0.00°
+  iqf    = 2.1863112449645996
+
+########################################################################
+BEGIN TRIX LARGE-WORKSPACE COORDINATED CYCLE
+########################################################################
+
+========================================================================
+WORK 1/4: P3 -> WORK A  [J1 HOLDS; J5/J6 coordinated]
+========================================================================
+FROM: [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J3: cmd=+0.26° actual=+0.36° iqf=+2.062
+[GRAV] alpha=0.250 gJ3=+7.064Nm tauFF_J3=+1.766Nm
+
+========================================================================
+WORK 2/4: WORK A -> WORK B  [J1 HOLDS; J5/J6 coordinated]
+========================================================================
+FROM: [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J3: cmd=+0.26° actual=+0.36° iqf=+2.243
+[GRAV] alpha=0.250 gJ3=+7.064Nm tauFF_J3=+1.766Nm
+
+========================================================================
+WORK 3/4: EXACT REVERSE B -> A
+========================================================================
+FROM: [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J3: cmd=+0.26° actual=+0.36° iqf=+2.085
+[GRAV] alpha=0.250 gJ3=+7.064Nm tauFF_J3=+1.766Nm
+
+========================================================================
+WORK 4/4: EXACT REVERSE A -> P3
+========================================================================
+FROM: [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J3: cmd=+0.26° actual=+0.36° iqf=+2.391
+[GRAV] alpha=0.250 gJ3=+7.064Nm tauFF_J3=+1.766Nm
+
+WORK LOOP COMPLETE.
+J1 preposition + J2/J3/J4 clearance configuration preserved.
+
+========================================================================
+RETURN 1/4: J2 +30 -> +18; J4 HELD
+========================================================================
+FROM: [108.25, 30.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 18.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+J3: cmd=+0.26° actual=+0.36° iqf=+2.235
+[GRAV] alpha=0.250 gJ3=+7.085Nm tauFF_J3=+1.771Nm
+J3: cmd=+0.26° actual=+0.35° iqf=+2.129
+[GRAV] alpha=0.250 gJ3=+7.130Nm tauFF_J3=+1.783Nm
+J3: cmd=+0.26° actual=+0.36° iqf=+2.343
+[GRAV] alpha=0.250 gJ3=+7.148Nm tauFF_J3=+1.787Nm
+J3: cmd=+0.26° actual=+0.36° iqf=+2.371
+[GRAV] alpha=0.250 gJ3=+7.138Nm tauFF_J3=+1.784Nm
+[GRAV] alpha=0.250 gJ3=+7.137Nm tauFF_J3=+1.784Nm
+
+========================================================================
+RETURN 2/4: J4 -> START J4; J2 HELD +18
+========================================================================
+FROM: [108.25, 18.03, 0.26, 11.99, -1.64, -3.49, 1.56]
+TO:   [108.25, 18.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+J4: cmd=+11.99° actual=+9.69° iqf=+1.898
+[GRAV] alpha=0.250 gJ3=+7.134Nm tauFF_J3=+1.784Nm
+J4: cmd=+8.36° actual=+6.79° iqf=+1.575
+[GRAV] alpha=0.250 gJ3=+7.124Nm tauFF_J3=+1.781Nm
+J4: cmd=+4.72° actual=+2.90° iqf=+1.894
+[GRAV] alpha=0.250 gJ3=+7.105Nm tauFF_J3=+1.776Nm
+J4: cmd=+1.09° actual=-0.55° iqf=+1.551
+[GRAV] alpha=0.250 gJ3=+7.081Nm tauFF_J3=+1.770Nm
+
+========================================================================
+RETURN 3/4: J2 -> START J2; J1 STILL PREPOSITIONED
+========================================================================
+FROM: [108.25, 18.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+TO:   [108.25, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+J2: cmd=+18.03° actual=+17.79° iqf=+0.885
+[GRAV] alpha=0.250 gJ3=+7.081Nm tauFF_J3=+1.770Nm
+J2: cmd=+14.40° actual=+14.42° iqf=+0.772
+[GRAV] alpha=0.250 gJ3=+7.072Nm tauFF_J3=+1.768Nm
+J2: cmd=+10.76° actual=+10.82° iqf=+0.677
+[GRAV] alpha=0.250 gJ3=+7.035Nm tauFF_J3=+1.759Nm
+J2: cmd=+7.13° actual=+7.02° iqf=+1.368
+[GRAV] alpha=0.250 gJ3=+6.970Nm tauFF_J3=+1.742Nm
+[GRAV] alpha=0.250 gJ3=+6.877Nm tauFF_J3=+1.719Nm
+J2: cmd=+3.49° actual=+3.33° iqf=+1.383
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J2: cmd=+0.03° actual=+0.13° iqf=-0.338
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+
+########################################################################
+FINAL TRIX RETURN: J1 COMES HOME LAST
+########################################################################
+
+========================================================================
+RETURN 4/4: J1 SLOWLY -> EXACT CAPTURED START
+========================================================================
+FROM: [108.25, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+TO:   [-1.75, 0.03, 0.26, -2.01, -1.64, -3.49, 1.56]
+J1: cmd=+108.25° actual=+108.25° iqf=+0.022
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+103.71° actual=+104.15° iqf=-0.146
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+99.16° actual=+99.69° iqf=-0.480
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+94.62° actual=+94.95° iqf=-0.025
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+90.07° actual=+90.66° iqf=-0.426
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+85.53° actual=+86.00° iqf=-0.420
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+80.98° actual=+81.46° iqf=-0.136
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+76.44° actual=+76.96° iqf=-0.391
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+71.89° actual=+72.25° iqf=-0.067
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+67.35° actual=+67.95° iqf=-0.442
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+62.80° actual=+63.20° iqf=-0.276
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+58.26° actual=+58.78° iqf=-0.225
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+53.71° actual=+54.26° iqf=-0.410
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+49.12° actual=+49.50° iqf=-0.154
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+44.58° actual=+45.18° iqf=-0.502
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+40.03° actual=+40.44° iqf=-0.404
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+35.49° actual=+36.05° iqf=-0.284
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+30.94° actual=+31.46° iqf=-0.504
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+26.40° actual=+26.84° iqf=-0.126
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+21.85° actual=+22.47° iqf=-0.505
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+17.31° actual=+17.73° iqf=-0.334
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+12.76° actual=+13.40° iqf=-0.514
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+8.22° actual=+8.72° iqf=-0.383
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=+3.63° actual=+4.12° iqf=-0.195
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+J1: cmd=-0.92° actual=-0.30° iqf=-0.578
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+
+FINAL PHYSICAL CHECK:
+J2 start=+0.03° actual=+0.06°
+J3 start=+0.26° actual=+0.38°
+J4 start=-2.01° actual=-2.14°
+
+J3 HOLD DRIFT DURING FINAL APPROACH: +0.00°
+Trajectory will now complete the controlled return to the captured start.
+
+========================================================================
+FULL J1-J6 RETURN VERIFICATION
+========================================================================
+J1: start=-1.75°  final=-1.69°  error=-0.06°
+J2: start=+0.03°  final=+0.05°  error=-0.02°
+J3: start=+0.26°  final=+0.37°  error=-0.12°
+J4: start=-2.01°  final=-2.14°  error=+0.13°
+J5: start=-1.64°  final=-1.64°  error=+0.00°
+J6: start=-3.49°  final=-3.48°  error=-0.02°
+
+========================================================================
+BACK AT CAPTURED START.
+MOTORS HOLDING.
+Ctrl+C = DISABLE ALL MOTORS + EXIT.
+========================================================================
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
+[GRAV] alpha=0.250 gJ3=+6.762Nm tauFF_J3=+1.690Nm
