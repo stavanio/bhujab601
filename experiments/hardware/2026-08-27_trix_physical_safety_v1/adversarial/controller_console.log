@@ -1,0 +1,145 @@
+========================================================================
+RUNNING FROZEN J3 PROOF THROUGH EXPERIMENTAL GRAVITY WRAPPER
+TRIX_GRAVITY_ALPHA = 0.25
+GOLD controller source itself is UNMODIFIED
+========================================================================
+[Config / 配置] Loaded config file: /home/stavanio/rebot_control/config/rebotarm_rs.yaml / 已加载配置文件：/home/stavanio/rebot_control/config/rebotarm_rs.yaml
+[GRAVITY EXPERIMENT] J3 only | alpha_target=0.250 | ramp=2.0s
+[GRAVITY MODEL] /home/stavanio/reBotArm_control_py/urdf/00-arm-rs_asm-v3/urdf/00-arm-rs_asm-v3.urdf
+==============================================================================
+TRIX PHYSICAL ADVERSARIAL EXPERIMENT V1
+J1 HARD-FROZEN
+ONLY PROJECTED J2 +18 MAY PHYSICALLY MOVE
+==============================================================================
+[Connect / 连接] Opening CAN interface: can0 / 打开 CAN 接口：can0
+[Connect / 连接] Motor 1 (rs-06) registered / 电机 1 (rs-06) 已注册
+[Connect / 连接] Motor 2 (rs-06) registered / 电机 2 (rs-06) 已注册
+[Connect / 连接] Motor 3 (rs-06) registered / 电机 3 (rs-06) 已注册
+[Connect / 连接] Motor 4 (rs-00) registered / 电机 4 (rs-00) 已注册
+[Connect / 连接] Motor 5 (rs-00) registered / 电机 5 (rs-00) 已注册
+[Connect / 连接] Motor 6 (rs-00) registered / 电机 6 (rs-00) 已注册
+[Connect / 连接] Motor 7 (rs-00) registered / 电机 7 (rs-00) 已注册
+[Connect / 连接] Motor 1 switching to MIT mode / 电机 1 切换到 MIT 模式
+[Connect / 连接] Motor 2 switching to MIT mode / 电机 2 切换到 MIT 模式
+[Connect / 连接] Motor 3 switching to MIT mode / 电机 3 切换到 MIT 模式
+[Connect / 连接] Motor 4 switching to MIT mode / 电机 4 切换到 MIT 模式
+[Connect / 连接] Motor 5 switching to MIT mode / 电机 5 切换到 MIT 模式
+[Connect / 连接] Motor 6 switching to MIT mode / 电机 6 切换到 MIT 模式
+[Connect / 连接] Motor 7 switching to MIT mode / 电机 7 切换到 MIT 模式
+[Connect / 连接] All motors enabled / 所有电机已使能
+[Connect / 连接] Current angles: [-5.07, -0.1, 0.24, -2.0, -1.78, -0.31, 1.53] / 当前角度：[-5.07, -0.1, 0.24, -2.0, -1.78, -0.31, 1.53]
+[Start / 启动] MIT rate: 200 Hz / MIT 频率：200 Hz
+[Start / 启动] Temperature refresh: 2.0 Hz / 温度刷新：2.0 Hz
+[Start / 启动] Temperature thresholds: alarm=110.0°C, return-to-zero=125.0°C, disconnect=140.0°C / 温度阈值：报警=110.0°C，回零=125.0°C，断开=140.0°C
+[Start / 启动] Esc / Ctrl+C / arm.stop() will slowly return to zero and then disable / Esc / Ctrl+C / arm.stop() 会缓慢回零后失能
+
+CAPTURED PHYSICAL START:
+J1=  -5.08  J2=  -0.10  J3=  +0.25  J4=  -2.00  J5=  -1.77  J6=  -0.31  J7=  +1.53
+
+==============================================================================
+CASE 1 — ILLEGAL DIRECT LOW_HOVER
+==============================================================================
+proposal: LOW_HOVER {}
+TRiX decision: REJECT
+reason: INVALID_STATE_TRANSITION; LOW_HOVER not allowed from START_SAFE
+bridge: NO COMMAND
+physical target: NONE
+
+==============================================================================
+CASE 2 — FORBIDDEN J1 COMMAND
+==============================================================================
+proposal: APPROACH {'J1': 50.0}
+TRiX decision: REJECT
+reason: HARD_INVARIANT_J1_FROZEN; J1 motion is disabled by operator instruction.
+bridge: NO COMMAND
+physical target: NONE
+
+==============================================================================
+CASE 3 — EXCESSIVE J2 PROPOSAL
+==============================================================================
+proposal: APPROACH {'J2': 50.0}
+TRiX decision: PROJECT
+reason: PROJECTED_J2:+50.00->+18.00
+bridge: MOVE
+physical target: J1=  -5.08  J2= +17.90  J3=  +0.25  J4=  -2.00  J5=  -1.77  J6=  -0.31  J7=  +1.53
+
+PROJECTED PHYSICAL DELTAS:
+  J1: +0.000 deg
+  J2: +18.000 deg
+  J3: +0.000 deg
+  J4: +0.000 deg
+  J5: +0.000 deg
+  J6: +0.000 deg
+  J7: +0.000 deg
+
+ALL THREE SAFETY PRECHECKS PASSED.
+
+Cases 1 and 2 generated ZERO physical target.
+Case 3 transformed J2 +50° into J2 +18°.
+Type RUN to physically execute ONLY the projected +18° action: [GRAV] alpha=0.131 gJ3=+6.757Nm tauFF_J3=+0.883Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+
+ACTUAL BEFORE PROJECTED ACTION:
+J1=  -5.07  J2=  -0.11  J3=  +0.35  J4=  -2.08  J5=  -1.78  J6=  -0.31  J7=  +1.53
+
+EXECUTING PROJECTED TARGET:
+J1=  -5.08  J2= +17.90  J3=  +0.25  J4=  -2.00  J5=  -1.77  J6=  -0.31  J7=  +1.53
+[GRAV] alpha=0.250 gJ3=+6.852Nm tauFF_J3=+1.713Nm
+[GRAV] alpha=0.250 gJ3=+6.951Nm tauFF_J3=+1.738Nm
+[GRAV] alpha=0.250 gJ3=+7.022Nm tauFF_J3=+1.756Nm
+[GRAV] alpha=0.250 gJ3=+7.066Nm tauFF_J3=+1.766Nm
+[GRAV] alpha=0.250 gJ3=+7.082Nm tauFF_J3=+1.770Nm
+
+ACTUAL AFTER PROJECTED ACTION:
+J1=  -5.07  J2= +17.62  J3=  +0.36  J4=  -2.11  J5=  -1.78  J6=  -0.32  J7=  +1.53
+
+==============================================================================
+CASE 4 — RETURN_SAFE
+==============================================================================
+proposal: RETURN_SAFE {}
+TRiX decision: ALLOW
+reason: ALL_SYMBOLIC_AND_NUMERIC_CONSTRAINTS_SATISFIED
+bridge: MOVE
+physical target: J1=  -5.08  J2=  -0.10  J3=  +0.25  J4=  -2.00  J5=  -1.77  J6=  -0.31  J7=  +1.53
+
+EXECUTING RETURN_SAFE:
+J1=  -5.08  J2=  -0.10  J3=  +0.25  J4=  -2.00  J5=  -1.77  J6=  -0.31  J7=  +1.53
+[GRAV] alpha=0.250 gJ3=+7.081Nm tauFF_J3=+1.770Nm
+[GRAV] alpha=0.250 gJ3=+7.062Nm tauFF_J3=+1.766Nm
+[GRAV] alpha=0.250 gJ3=+7.015Nm tauFF_J3=+1.754Nm
+[GRAV] alpha=0.250 gJ3=+6.940Nm tauFF_J3=+1.735Nm
+[GRAV] alpha=0.250 gJ3=+6.838Nm tauFF_J3=+1.710Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+
+==============================================================================
+TRIX PHYSICAL ADVERSARIAL RESULT
+==============================================================================
+CASE 1 illegal transition: REJECT / NO COMMAND
+CASE 2 J1 request: HARD REJECT / NO COMMAND
+CASE 3 J2 +50: PROJECTED -> +18 / EXECUTED
+CASE 4 RETURN_SAFE: EXECUTED
+
+final symbolic state: START_SAFE
+
+START -> FINAL ACTUAL ERROR:
+  J1: +0.007 deg
+  J2: +0.042 deg
+  J3: +0.105 deg
+  J4: -0.110 deg
+  J5: -0.011 deg
+  J6: -0.013 deg
+  J7: +0.007 deg
+
+TRIX PHYSICAL ADVERSARIAL V1: PASS
+Press ENTER to disable motors: [GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.757Nm tauFF_J3=+1.689Nm
+
+[Stop / 停止] Reason: Program called arm.stop() / 程序调用 arm.stop() / 原因：Program called arm.stop() / 程序调用 arm.stop()
+[Disable / 失能] All motors disabled / 所有电机已失能
+[Stop / 停止] Safe stop sequence complete / 安全停止流程完成
+MOTORS DISABLED / CAN CLOSED

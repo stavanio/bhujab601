@@ -1,0 +1,166 @@
+========================================================================
+RUNNING FROZEN J3 PROOF THROUGH EXPERIMENTAL GRAVITY WRAPPER
+TRIX_GRAVITY_ALPHA = 0.25
+GOLD controller source itself is UNMODIFIED
+========================================================================
+[Config / 配置] Loaded config file: /home/stavanio/rebot_control/config/rebotarm_rs.yaml / 已加载配置文件：/home/stavanio/rebot_control/config/rebotarm_rs.yaml
+[GRAVITY EXPERIMENT] J3 only | alpha_target=0.250 | ramp=2.0s
+[GRAVITY MODEL] /home/stavanio/reBotArm_control_py/urdf/00-arm-rs_asm-v3/urdf/00-arm-rs_asm-v3.urdf
+========================================================================
+TRIX PHYSICAL EXPERIMENT V1
+ONLY J2 DISPLACEMENT IS PERMITTED
+J1 TARGET WILL NEVER CHANGE
+========================================================================
+[Connect / 连接] Opening CAN interface: can0 / 打开 CAN 接口：can0
+[Connect / 连接] Motor 1 (rs-06) registered / 电机 1 (rs-06) 已注册
+[Connect / 连接] Motor 2 (rs-06) registered / 电机 2 (rs-06) 已注册
+[Connect / 连接] Motor 3 (rs-06) registered / 电机 3 (rs-06) 已注册
+[Connect / 连接] Motor 4 (rs-00) registered / 电机 4 (rs-00) 已注册
+[Connect / 连接] Motor 5 (rs-00) registered / 电机 5 (rs-00) 已注册
+[Connect / 连接] Motor 6 (rs-00) registered / 电机 6 (rs-00) 已注册
+[Connect / 连接] Motor 7 (rs-00) registered / 电机 7 (rs-00) 已注册
+[Connect / 连接] Motor 1 switching to MIT mode / 电机 1 切换到 MIT 模式
+[Connect / 连接] Motor 2 switching to MIT mode / 电机 2 切换到 MIT 模式
+[Connect / 连接] Motor 3 switching to MIT mode / 电机 3 切换到 MIT 模式
+[Connect / 连接] Motor 4 switching to MIT mode / 电机 4 切换到 MIT 模式
+[Connect / 连接] Motor 5 switching to MIT mode / 电机 5 切换到 MIT 模式
+[Connect / 连接] Motor 6 switching to MIT mode / 电机 6 切换到 MIT 模式
+[Connect / 连接] Motor 7 switching to MIT mode / 电机 7 切换到 MIT 模式
+[Connect / 连接] All motors enabled / 所有电机已使能
+[Connect / 连接] Current angles: [-5.07, -0.2, 0.23, -1.99, -1.77, -0.3, 1.53] / 当前角度：[-5.07, -0.2, 0.23, -1.99, -1.77, -0.3, 1.53]
+[Start / 启动] MIT rate: 200 Hz / MIT 频率：200 Hz
+[Start / 启动] Temperature refresh: 2.0 Hz / 温度刷新：2.0 Hz
+[Start / 启动] Temperature thresholds: alarm=110.0°C, return-to-zero=125.0°C, disconnect=140.0°C / 温度阈值：报警=110.0°C，回零=125.0°C，断开=140.0°C
+[Start / 启动] Esc / Ctrl+C / arm.stop() will slowly return to zero and then disable / Esc / Ctrl+C / arm.stop() 会缓慢回零后失能
+
+CAPTURED RELOCATED START:
+J1=  -5.07  J2=  -0.19  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+
+========================================================================
+TRIX PRE-MOTION DECISION
+========================================================================
+proposal : APPROACH
+decision : ALLOW
+reason   : ALL_SYMBOLIC_AND_NUMERIC_CONSTRAINTS_SATISFIED
+
+CAPTURED START:
+J1=  -5.07  J2=  -0.19  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+
+APPROACH TARGET:
+J1=  -5.07  J2= +17.81  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+
+REQUESTED PHYSICAL DELTAS:
+  J1: +0.000 deg
+  J2: +18.000 deg
+  J3: +0.000 deg
+  J4: +0.000 deg
+  J5: +0.000 deg
+  J6: +0.000 deg
+  J7: +0.000 deg
+
+PRECHECK PASSED:
+  ONLY J2 WILL CHANGE (+18 deg)
+  J1 target remains EXACTLY captured
+  J3/J4/J5/J6/J7 remain captured
+
+Type RUN to execute this bounded physical episode: [GRAV] alpha=0.131 gJ3=+6.754Nm tauFF_J3=+0.883Nm
+[GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.688Nm
+[GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.688Nm
+
+ACTUAL BEFORE APPROACH:
+J1=  -5.07  J2=  -0.20  J3=  +0.34  J4=  -2.04  J5=  -1.77  J6=  -0.31  J7=  +1.52
+
+========================================================================
+TRIX ACTION 1: APPROACH
+========================================================================
+TARGET:
+J1=  -5.07  J2= +17.81  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+J1 invariant: -5.068359 deg == captured -5.068359 deg
+[GRAV] alpha=0.250 gJ3=+6.872Nm tauFF_J3=+1.718Nm
+[GRAV] alpha=0.250 gJ3=+6.966Nm tauFF_J3=+1.741Nm
+[GRAV] alpha=0.250 gJ3=+7.032Nm tauFF_J3=+1.758Nm
+[GRAV] alpha=0.250 gJ3=+7.071Nm tauFF_J3=+1.768Nm
+[GRAV] alpha=0.250 gJ3=+7.082Nm tauFF_J3=+1.770Nm
+
+COMMAND ARRIVED:
+J1=  -5.07  J2= +17.81  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+
+ACTUAL:
+J1=  -5.08  J2= +17.53  J3=  +0.35  J4=  -2.08  J5=  -1.77  J6=  -0.30  J7=  +1.54
+
+Tracking error actual-target:
+  J1: -0.012 deg
+  J2: -0.278 deg
+  J3: +0.115 deg
+  J4: -0.083 deg
+  J5: +0.009 deg
+  J6: +0.004 deg
+  J7: +0.013 deg
+
+========================================================================
+TRIX RETURN DECISION
+========================================================================
+proposal : RETURN_SAFE
+decision : ALLOW
+reason   : ALL_SYMBOLIC_AND_NUMERIC_CONSTRAINTS_SATISFIED
+
+========================================================================
+TRIX ACTION 2: RETURN_SAFE
+========================================================================
+TARGET:
+J1=  -5.07  J2=  -0.19  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+J1 invariant: -5.068359 deg == captured -5.068359 deg
+[GRAV] alpha=0.250 gJ3=+7.079Nm tauFF_J3=+1.770Nm
+[GRAV] alpha=0.250 gJ3=+7.054Nm tauFF_J3=+1.763Nm
+[GRAV] alpha=0.250 gJ3=+7.000Nm tauFF_J3=+1.750Nm
+[GRAV] alpha=0.250 gJ3=+6.919Nm tauFF_J3=+1.730Nm
+[GRAV] alpha=0.250 gJ3=+6.811Nm tauFF_J3=+1.703Nm
+
+COMMAND ARRIVED:
+J1=  -5.07  J2=  -0.19  J3=  +0.23  J4=  -1.99  J5=  -1.78  J6=  -0.31  J7=  +1.52
+
+ACTUAL:
+J1=  -5.08  J2=  -0.12  J3=  +0.35  J4=  -2.08  J5=  -1.77  J6=  -0.31  J7=  +1.54
+
+Tracking error actual-target:
+  J1: -0.015 deg
+  J2: +0.068 deg
+  J3: +0.115 deg
+  J4: -0.086 deg
+  J5: +0.007 deg
+  J6: -0.004 deg
+  J7: +0.011 deg
+
+========================================================================
+PHYSICAL TRIX V1 RESULT
+========================================================================
+final symbolic state: START_SAFE
+
+START -> FINAL ACTUAL ERROR:
+  J1: -0.015 deg
+  J2: +0.068 deg
+  J3: +0.115 deg
+  J4: -0.086 deg
+  J5: +0.007 deg
+  J6: -0.004 deg
+  J7: +0.011 deg
+
+J1 measured start->final drift: -0.015 deg
+
+TRIX PHYSICAL V1 COMPLETE:
+  APPROACH allowed and executed
+  RETURN_SAFE allowed and executed
+  J1 target invariant maintained
+
+Robot is holding captured pose. Press ENTER to disable motors and close CAN: [GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.689Nm
+[GRAV] alpha=0.250 gJ3=+6.754Nm tauFF_J3=+1.689Nm
+
+Disabling motors WITHOUT automatic return-to-zero...
+
+[Stop / 停止] Reason: Program called arm.stop() / 程序调用 arm.stop() / 原因：Program called arm.stop() / 程序调用 arm.stop()
+[Disable / 失能] All motors disabled / 所有电机已失能
+[Stop / 停止] Safe stop sequence complete / 安全停止流程完成
+MOTORS DISABLED / CAN CLOSED
