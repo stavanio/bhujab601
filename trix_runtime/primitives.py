@@ -23,6 +23,30 @@ class Primitive:
 
 PRIMITIVES = {
 
+    Action.OPEN_GRIPPER: Primitive(
+        action=Action.OPEN_GRIPPER,
+        allowed_from=(Mode.START_SAFE,),
+        next_mode=Mode.START_SAFE,
+        targets={
+            "J7": 40.0,
+        },
+        limits={
+            "J7": (40.0, 40.0),
+        },
+    ),
+
+    Action.CLOSE_GRIPPER: Primitive(
+        action=Action.CLOSE_GRIPPER,
+        allowed_from=(Mode.START_SAFE,),
+        next_mode=Mode.START_SAFE,
+        targets={
+            "J7": 0.0,
+        },
+        limits={
+            "J7": (0.0, 0.0),
+        },
+    ),
+
     Action.APPROACH: Primitive(
         action=Action.APPROACH,
         allowed_from=(Mode.START_SAFE,),
@@ -73,15 +97,68 @@ PRIMITIVES = {
         },
     ),
 
+
+    Action.DEEP_HOVER: Primitive(
+        action=Action.DEEP_HOVER,
+        allowed_from=(Mode.LOW_HOVER,),
+        next_mode=Mode.DEEP_HOVER,
+
+        # Extend farther/down from the proven LOW_HOVER.
+        targets={
+            "J2": 36.0,
+            "J3": -3.0,
+        },
+
+        limits={
+            "J2": (30.0, 36.0),
+            "J3": (-3.0, 0.0),
+        },
+    ),
+
+    Action.RETURN_LOW_HOVER: Primitive(
+        action=Action.RETURN_LOW_HOVER,
+        allowed_from=(Mode.DEEP_HOVER,),
+        next_mode=Mode.LOW_HOVER,
+
+        # First retreat from DEEP_HOVER to the already-proven
+        # LOW_HOVER geometry before any larger reverse motion.
+        targets={
+            "J2": 30.0,
+            "J3": 0.0,
+        },
+
+        limits={
+            "J2": (30.0, 30.0),
+            "J3": (0.0, 0.0),
+        },
+    ),
+
     Action.ENGAGE: Primitive(
         action=Action.ENGAGE,
-        allowed_from=(Mode.LOW_HOVER,),
-        next_mode=Mode.ENGAGED,
+        allowed_from=(Mode.DEEP_HOVER,),
+        next_mode=Mode.DEEP_HOVER,
 
-        # Symbolic only for v1.
-        # No J7 command is emitted yet.
-        targets={},
-        limits={},
+        # Close gripper around an object.
+        targets={
+            "J7": 0.0,
+        },
+        limits={
+            "J7": (0.0, 0.0),
+        },
+    ),
+
+    Action.RELEASE: Primitive(
+        action=Action.RELEASE,
+        allowed_from=(Mode.START_SAFE,),
+        next_mode=Mode.START_SAFE,
+
+        # Re-open gripper after returning to the safe arm pose.
+        targets={
+            "J7": 40.0,
+        },
+        limits={
+            "J7": (40.0, 40.0),
+        },
     ),
 
     Action.RETRACT: Primitive(

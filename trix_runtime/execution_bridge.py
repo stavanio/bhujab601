@@ -20,6 +20,18 @@ SUPPORTED_JOINTS = (
     "J6",
 )
 
+# J7 is carried separately from the arm target dictionary.
+# This preserves the legacy J2-J6 command contract while allowing
+# explicit, state-gated gripper actions.
+GRIPPER_JOINT = "J7"
+
+GRIPPER_ACTIONS = {
+    Action.OPEN_GRIPPER,
+    Action.CLOSE_GRIPPER,
+    Action.ENGAGE,
+    Action.RELEASE,
+}
+
 
 class BridgeKind(str, Enum):
     MOVE = "MOVE"
@@ -38,6 +50,12 @@ class BridgeCommand:
     target_delta_deg: Dict[str, float]
     reason: str
 
+    # Relative J7 target from captured start.
+    #
+    # Kept separate so the legacy arm command dictionary remains
+    # exactly J2-J6.
+    gripper_delta_deg: float = 0.0
+
 
 class TrixExecutionBridge:
     """
@@ -48,7 +66,7 @@ class TrixExecutionBridge:
       - does NOT import socketcan
       - does NOT open CAN
       - does NOT know about motor IDs
-      - only exposes J2-J6
+      - exposes J2-J6 arm targets plus separately gated J7
     """
 
     def build(
@@ -65,15 +83,31 @@ class TrixExecutionBridge:
         # even if an upstream software bug somehow creates an
         # invalid Decision object, unsupported joints may not
         # cross this bridge.
+        projected_joints = set(
+            decision.projected_targets
+        )
+
         unsupported = (
-            set(decision.projected_targets)
+            projected_joints
             - set(SUPPORTED_JOINTS)
+            - {GRIPPER_JOINT}
         )
 
         if unsupported:
             raise BridgeSafetyError(
                 "UNSUPPORTED_JOINT_AT_EXECUTION_BOUNDARY:"
                 + ",".join(sorted(unsupported))
+            )
+
+        # J7 may cross the execution boundary ONLY when the
+        # approved action itself is an explicit gripper action.
+        if (
+            GRIPPER_JOINT in projected_joints
+            and decision.proposal.action not in GRIPPER_ACTIONS
+        ):
+            raise BridgeSafetyError(
+                "J7_NOT_ALLOWED_FOR_ACTION:"
+                f"{decision.proposal.action.value}"
             )
 
         if decision.proposal.action == Action.EMERGENCY_STOP:
@@ -85,10 +119,7 @@ class TrixExecutionBridge:
             )
 
         # Symbolic actions that intentionally cause no joint motion.
-        if decision.proposal.action in (
-            Action.HOLD,
-            Action.ENGAGE,
-        ):
+        if decision.proposal.action == Action.HOLD:
             return BridgeCommand(
                 kind=BridgeKind.NO_MOTION,
                 action=decision.proposal.action,
@@ -106,14 +137,24 @@ class TrixExecutionBridge:
             for joint in SUPPORTED_JOINTS
         }
 
+        # Preserve the currently accepted gripper state during
+        # ordinary arm motion.
+        gripper_delta = float(
+            state_before.gripper_delta_deg
+        )
+
         for joint, value in (
             decision.projected_targets.items()
         ):
-            target[joint] = float(value)
+            if joint == GRIPPER_JOINT:
+                gripper_delta = float(value)
+            else:
+                target[joint] = float(value)
 
         return BridgeCommand(
             kind=BridgeKind.MOVE,
             action=decision.proposal.action,
             target_delta_deg=target,
             reason="ADMISSIBLE_TRIX_TARGET",
+            gripper_delta_deg=gripper_delta,
         )

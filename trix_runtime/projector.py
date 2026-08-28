@@ -5,6 +5,7 @@ from .types import (
     Action,
     Decision,
     DecisionType,
+    GripperState,
     Mode,
     Proposal,
     RobotState,
@@ -29,11 +30,15 @@ FROZEN_JOINTS = {"J1"}
 #
 # These are relative to captured start, not motor absolute limits.
 GLOBAL_ENVELOPE = {
-    "J2": (0.0, 30.0),
-    "J3": (0.0, 9.0),
+    "J2": (0.0, 36.0),
+    "J3": (-3.0, 9.0),
     "J4": (0.0, 14.0),
     "J5": (-8.0, 8.0),
     "J6": (-8.0, 8.0),
+
+    # J7 is NOT generically writable.
+    # It is numerically bounded here, then action-gated below.
+    "J7": (0.0, 40.0),
 }
 
 
@@ -87,6 +92,54 @@ class TrixProjector:
                 reasons=[
                     f"FAULT_ACTIVE:{state.fault}",
                 ],
+                next_mode=state.mode,
+            )
+
+        # --------------------------------------------------------
+        # GRIPPER SYMBOLIC-STATE GATE
+        # --------------------------------------------------------
+
+        if (
+            proposal.action == Action.OPEN_GRIPPER
+            and state.gripper_state != GripperState.CLOSED
+        ):
+            return Decision(
+                decision=DecisionType.REJECT,
+                proposal=proposal,
+                reasons=["GRIPPER_ALREADY_OPEN"],
+                next_mode=state.mode,
+            )
+
+        if (
+            proposal.action == Action.CLOSE_GRIPPER
+            and state.gripper_state != GripperState.OPEN
+        ):
+            return Decision(
+                decision=DecisionType.REJECT,
+                proposal=proposal,
+                reasons=["GRIPPER_ALREADY_CLOSED"],
+                next_mode=state.mode,
+            )
+
+        if (
+            proposal.action == Action.ENGAGE
+            and state.gripper_state != GripperState.OPEN
+        ):
+            return Decision(
+                decision=DecisionType.REJECT,
+                proposal=proposal,
+                reasons=["ENGAGE_REQUIRES_OPEN_GRIPPER"],
+                next_mode=state.mode,
+            )
+
+        if (
+            proposal.action == Action.RELEASE
+            and state.gripper_state != GripperState.CLOSED
+        ):
+            return Decision(
+                decision=DecisionType.REJECT,
+                proposal=proposal,
+                reasons=["RELEASE_REQUIRES_CLOSED_GRIPPER"],
                 next_mode=state.mode,
             )
 
@@ -276,6 +329,21 @@ class TrixProjector:
         for joint, value in (
             decision.projected_targets.items()
         ):
-            new_state.joint_delta_deg[joint] = value
+            if joint == "J7":
+                new_state.gripper_delta_deg = float(value)
+            else:
+                new_state.joint_delta_deg[joint] = value
+
+        if decision.proposal.action in (
+            Action.OPEN_GRIPPER,
+            Action.RELEASE,
+        ):
+            new_state.gripper_state = GripperState.OPEN
+
+        if decision.proposal.action in (
+            Action.CLOSE_GRIPPER,
+            Action.ENGAGE,
+        ):
+            new_state.gripper_state = GripperState.CLOSED
 
         return new_state

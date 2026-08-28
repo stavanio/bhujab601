@@ -17,8 +17,9 @@ class PhysicalTarget:
     """
     Full actuator target consumed by the existing arm executor.
 
-    J1 and J7 are captured invariants for TRiX physical v1.
+    J1 remains a captured hard invariant.
     J2-J6 are generated from approved TRiX relative deltas.
+    J7 is generated only from the separately gated gripper delta.
     """
     angles_deg: tuple[float, ...]
     action: str
@@ -61,7 +62,7 @@ class TrixPhysicalTargetAdapter:
         )
 
         self._frozen_j1 = self._start[0]
-        self._frozen_j7 = self._start[6]
+        self._captured_j7 = self._start[6]
 
     @property
     def captured_start_deg(self):
@@ -108,7 +109,7 @@ class TrixPhysicalTargetAdapter:
         # Begin from the exact physical pose captured at connection.
         target = list(self._start)
 
-        # Apply ONLY J2-J6 relative displacements.
+        # Apply ONLY approved J2-J6 arm relative displacements.
         for joint, delta in (
             command.target_delta_deg.items()
         ):
@@ -126,17 +127,29 @@ class TrixPhysicalTargetAdapter:
         # J1 must remain EXACTLY where it was captured.
         target[0] = self._frozen_j1
 
-        # Gripper not part of physical TRiX v1 yet.
-        target[6] = self._frozen_j7
+        # J7 is relative to the physically captured gripper start.
+        #
+        # This physical boundary independently enforces the currently
+        # proven gripper envelope even if an upstream bug constructs
+        # a malicious BridgeCommand.
+        gripper_delta = float(
+            command.gripper_delta_deg
+        )
+
+        if not 0.0 <= gripper_delta <= 40.0:
+            raise PhysicalAdapterSafetyError(
+                "J7_DELTA_OUTSIDE_PHYSICAL_ENVELOPE:"
+                f"{gripper_delta:+.6f}"
+            )
+
+        target[6] = (
+            self._captured_j7
+            + gripper_delta
+        )
 
         if target[0] != self._frozen_j1:
             raise PhysicalAdapterSafetyError(
                 "J1_INVARIANT_VIOLATED"
-            )
-
-        if target[6] != self._frozen_j7:
-            raise PhysicalAdapterSafetyError(
-                "J7_INVARIANT_VIOLATED"
             )
 
         return PhysicalTarget(
